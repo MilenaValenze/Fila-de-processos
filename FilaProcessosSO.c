@@ -3,23 +3,22 @@
 #include <locale.h>
 #include <math.h>
 
-//adicionar: first2, pq a fila de priorit·rios pode estar vazia.
-//adicionar: no primeiro caso, o first1 vai ser = last1
+//Autores: Milena Valenze e Lucas Maraca√≠pe
 
-struct list{
+struct Process{
 	int ID;
 	char name[30];
-	struct list *prox;
+	struct Process *prox;
 };
 
-typedef struct list List;
+typedef struct Process Process;
 
-List *New, *first1, *last1, *aux, *first2, *last2; //New È o novo processo. first1 È o primeiro da fila(priorit·rio). last1 È o ˙ltimo dos prioritarios
+Process *New, *first1, *last1, *aux, *first2, *last2; //New √© o novo processo. first1 √© o primeiro da fila(priorit√°rio). last1 √© o √∫ltimo dos prioritarios
 
-AddProcess(){//Sempre adicionar no final da lista, pois È uma fila
+AddProcess(){//Sempre adicionar no final da lista, pois √© uma fila
 	int choose;
 
-	New=(List *)malloc(sizeof(List));
+	New=(Process *)malloc(sizeof(Process));
 	printf("ID: ");
 	scanf("%i", &New->ID);
 	printf("Nome: ");
@@ -83,7 +82,7 @@ Execute(){ //O processo vai para o final da fila
 	printf("\nPronto.\n");
 }
 
-EndProcess(){ //Ir· remover apenas os primeiros da fila, j· que esses ser„o executados primeiro
+EndProcess(){ //Ir√° remover apenas os primeiros da fila, j√° que esses ser√£o executados primeiro
 	if(first1 == NULL && first2 == NULL){
 		printf("\nLista vazia!\n\n");
 		return (0);
@@ -150,9 +149,9 @@ main()
 		printf("3- Finalizar processo\n");
 		printf("4- Listar processos\n");
 		printf("5- Sair\n\n");
-		printf("OpÁ„o: ");
+		printf("Op√ß√£o: ");
 		scanf("%i", &opc);
-		
+		system("cls");
 		switch(opc){
 			case 1:
 				printf("1- Adicionar processo\n");
